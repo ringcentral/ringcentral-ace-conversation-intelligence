@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ringcentral-ace",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ACE provides complete visibility into customer calls, meetings, and digital interactions. Managers can compare agent performance and turn quality metrics into targeted, evidence-based coaching backed by real interaction data. Executives gain clear foresight into key trends, competitor activity, churn risks, and customer satisfaction across all conversations.",
   "author": {
     "name": "RingCentral Inc.",

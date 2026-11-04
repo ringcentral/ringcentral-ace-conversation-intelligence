@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.0.7 — 2026-11-04
+
 Initial public release of **RingCentral ACE - Conversation Intelligence** for Claude, ChatGPT, and Codex.
 
 - Marketplace installation and setup guidance for users and AI agents, with the namespaced plugin and connector ID `ringcentral-ace`.
