@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ringcentral-ace": {
+      "type": "streamable-http",
+      "url": "https://mcp.ace.ringcentral.com/mcp"
+    }
+  },
+  "claudeOAuth": {
+    "callbackPort": 8080
+  }
+}

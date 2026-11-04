@@ -1,0 +1,50 @@
+{
+  "name": "ringcentral-ace",
+  "version": "1.0.6",
+  "description": "ACE provides complete visibility into customer calls, meetings, and digital interactions. Managers can compare agent performance and turn quality metrics into targeted, evidence-based coaching backed by real interaction data. Executives gain clear foresight into key trends, competitor activity, churn risks, and customer satisfaction across all conversations.",
+  "author": {
+    "name": "RingCentral Inc.",
+    "url": "https://www.ringcentral.com/products/ai-conversation-expert"
+  },
+  "homepage": "https://www.ringcentral.com/products/ai-conversation-expert",
+  "repository": "https://github.com/ringcentral/ringcentral-ace-conversation-intelligence",
+  "license": "MIT",
+  "keywords": [
+    "ace",
+    "ringsense",
+    "conversation-intelligence",
+    "call-analytics",
+    "coaching",
+    "voice-of-customer",
+    "competitive-intelligence",
+    "churn"
+  ],
+  "displayName": "RingCentral ACE - Conversation Intelligence",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "RingCentral ACE - Conversation Intelligence",
+    "shortDescription": "Insights from conversations",
+    "longDescription": "ACE provides complete visibility into customer calls, meetings, and digital interactions. Managers can compare agent performance and turn quality metrics into targeted, evidence-based coaching backed by real interaction data. Executives gain clear foresight into key trends, competitor activity, churn risks, and customer satisfaction across all conversations.",
+    "developerName": "RingCentral Inc.",
+    "category": "Data & Analytics",
+    "capabilities": [
+      "Search past interactions",
+      "Review conversation summaries",
+      "Analyze customer insights",
+      "Compare team performance"
+    ],
+    "websiteURL": "https://www.ringcentral.com/products/ai-conversation-expert",
+    "supportURL": "https://developers.ringcentral.com/support/create-case",
+    "privacyPolicyURL": "https://www.ringcentral.com/privacy",
+    "termsOfServiceURL": "https://www.ringcentral.com/legal",
+    "defaultPrompt": [
+      "Find an agent's recent recorded calls and extract the key questions asked and next steps.",
+      "Analyze customer satisfaction drivers and summarize the main topics from recent calls.",
+      "Which tracked customer issues rose most this week vs. last week? Show daily counts, percentage changes, and example calls."
+    ],
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
+    "logoDark": "./assets/icon.svg"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ringcentral-ace": {
+      "type": "http",
+      "url": "https://mcp.ace.ringcentral.com/mcp",
+      "oauth": {
+        "callbackPort": 8080
+      }
+    }
+  }
+}

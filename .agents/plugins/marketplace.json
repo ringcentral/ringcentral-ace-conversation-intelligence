@@ -1,0 +1,25 @@
+{
+  "name": "ringcentral-ace-conversation-intelligence",
+  "description": "Conversation intelligence for RingCentral calls and meetings.",
+  "owner": {
+    "name": "RingCentral Inc."
+  },
+  "plugins": [
+    {
+      "name": "ringcentral-ace",
+      "source": {
+        "source": "local",
+        "path": "./plugins/openai"
+      },
+      "description": "ACE provides complete visibility into customer calls, meetings, and digital interactions. Managers can compare agent performance and turn quality metrics into targeted, evidence-based coaching backed by real interaction data. Executives gain clear foresight into key trends, competitor activity, churn risks, and customer satisfaction across all conversations.",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Data & Analytics"
+    }
+  ],
+  "interface": {
+    "displayName": "RingCentral ACE - Conversation Intelligence"
+  }
+}

@@ -1,0 +1,73 @@
+name: Validate and build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        default: ''
+      release_tag:
+        type: string
+        default: ''
+    outputs:
+      commit:
+        description: Commit validated and packaged
+        value: ${{ jobs.validate.outputs.commit }}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      commit: ${{ steps.revision.outputs.commit }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.2'
+          package-manager-cache: false
+      - name: Install pinned validators
+        shell: bash
+        run: |
+          python -m pip install -r requirements-dev.txt
+          RC_CLAUDE_VERSION=$(cat .claude-code-version)
+          [[ "$RC_CLAUDE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          npm install --global "@anthropic-ai/claude-code@$RC_CLAUDE_VERSION"
+      - name: Validate installable packages
+        run: python scripts/plugin_repo.py check
+      - name: Validate Claude package and marketplace
+        run: |
+          claude plugin validate ./plugins/claude --strict
+          claude plugin validate . --strict
+      - name: Verify release version
+        if: inputs.release_tag != ''
+        env:
+          RC_RELEASE_TAG: ${{ inputs.release_tag }}
+        run: python scripts/plugin_repo.py check --tag "$RC_RELEASE_TAG"
+      - name: Build release archives
+        run: python scripts/plugin_repo.py build
+      - name: Record validated revision
+        id: revision
+        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: plugin-packages
+          path: |
+            dist/*.zip
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+if [ -x .venv/bin/python ]; then
+    .venv/bin/python scripts/plugin_repo.py check-staged
+else
+    python3 scripts/plugin_repo.py check-staged
+fi

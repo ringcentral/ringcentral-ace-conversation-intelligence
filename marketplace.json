@@ -1,0 +1,7 @@
+{
+  "name": "ringcentral-ace-conversation-intelligence",
+  "description": "Conversation intelligence for RingCentral calls and meetings.",
+  "owner": {
+    "name": "RingCentral Inc."
+  }
+}
